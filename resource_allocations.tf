@@ -1,4 +1,4 @@
-#Global account level
+# Global account level
 
 # Assign a user to a role collection on global account level
 resource "btp_globalaccount_role_collection_assignment" "WPCBTP-GA-U-VIEWER" {
@@ -24,7 +24,7 @@ resource "btp_subaccount_role_collection_assignment" "WPCBTP-SA-U-VIEWER" {
   user_name            = "akos.farkas35@gmail.com"
 }
 
-# assign a single user to a role collection on subaccount level
+# Assign a single user to a role collection on subaccount level
 resource "btp_subaccount_role_collection_assignment" "WPCBTP-SA-U-VIEWER-02" {
   subaccount_id        = btp_subaccount.WPCBTP-AWS-US10-DEV-01.id
   role_collection_name = "Subaccount Viewer"
