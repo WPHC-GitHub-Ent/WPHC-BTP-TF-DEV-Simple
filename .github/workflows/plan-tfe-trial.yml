@@ -1,0 +1,79 @@
+name: "Plan-TFE-Trial"
+
+on:
+  pull_request:
+    branches:
+      - 'main-old'
+    paths:
+      - 'trial/tfe-trial/**'
+      - '!**.md'
+  
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+permissions: write-all
+ 
+env:
+  TF_IN_AUTOMATION: "true"
+  TF_INPUT: "false"
+
+jobs:
+  deploy:
+    name: Plan-Managed
+    runs-on: ubuntu-latest
+    environment: prd_plan
+    strategy:
+      matrix:
+        env: [APPS-AWS-IDENTITY-MANAGED-PRD]
+
+    env: 
+      TF_WORKSPACE: ${{ matrix.env }}
+      
+    steps:           
+    - uses: actions/checkout@v2
+      name: "Checkout self"
+      with:
+        path: main
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with: 
+        aws-region: us-east-1
+        role-to-assume: ${{ secrets.AWS_READ_ROLE }}
+        role-session-name: SSOReadRole
+        role-duration-seconds: 7200
+
+    - name: Configure Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        cli_config_credentials_hostname: "terraform.xom.cloud"
+        cli_config_credentials_token: "${{ secrets.TFE_TOKEN }}"
+      
+    - name: Terraform Format
+      id: terraform-fmt
+      run: terraform fmt -diff
+      working-directory: main/prd/tfe-managed
+
+    - id: terraform-init
+      name: Terraform init
+      working-directory: main/prd/tfe-managed
+      run: terraform init
+      
+    - name: Terraform Validate
+      id: terraform-validate
+      working-directory: main/prd/tfe-managed
+      run: terraform validate -no-color
+
+    - id: terraform-plan
+      name: Terraform plan
+      working-directory: main/prd/tfe-managed
+      run: terraform plan -no-color -input=false -out=tfplan -lock=false
+      
+    - id: terraform-show
+      name: Terraform show
+      working-directory: main/prd/tfe-managed
+      run: terraform show -no-color tfplan
+  
+    - name: Terraform Plan Status
+      if: steps.terraform-plan.outcome == 'failure'
+      run: exit 1
