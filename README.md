@@ -5,9 +5,9 @@ Repository for deploying resources on a BTP Trial account using Terraform.
 
 ## LogIn:
 
-- btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain 29378006trial-ga --sso
-- btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain 29378006trial-ga --user akos.farkas@wolfpack.hu
-- btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain 29378006trial-ga --user akos.farkas35@gmail.com
+- btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain bcc97204trial-ga --sso
+- btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain bcc97204trial-ga --user akos.farkas@wolfpack.hu
+- btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain bcc97204trial-ga --user akos.farkas35@gmail.com
 - btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain <GLOBALACCOUNT> --user <USER> --password <PASSWORD>
 - btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain <GLOBALACCOUNT> --idp <TENANT>
 - btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain <GLOBALACCOUNT> --sso --idp <TENANT>
