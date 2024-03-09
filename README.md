@@ -4,11 +4,9 @@ Repository for BTP Development
 WPHC-BTP-Trial
 BTP Development Environment on BTP Trial Account
 
-=========
-BTP CLI
-=========
+# BTP CLI
 
-LogIn:
+## LogIn:
 
 btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain 29378006trial-ga --sso
 btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain 29378006trial-ga --user akos.farkas@wolfpack.hu
@@ -17,24 +15,22 @@ btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain <GLOBALACCOU
 btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain <GLOBALACCOUNT> --idp <TENANT>
 btp login --url https://cpcli.cf.eu10.hana.ondemand.com --subdomain <GLOBALACCOUNT> --sso --idp <TENANT>
 
-Set Target:
+## Set Target:
 
 btp target --global-account SUBDOMAIN 
 btp target --directory ID
 btp target --subaccount ID
 
-Pass Credentials in the shell:
+## Pass Credentials in the shell:
 
 export btp_username=akos.farkas@wolfpack.hu
 export btp_password=password
 
-LogOut:
+## LogOut:
 
 btp logout
 
-==========
-Terraform:
-==========
+# Terraform:
 
 - terraform fmt
 - terraform init
