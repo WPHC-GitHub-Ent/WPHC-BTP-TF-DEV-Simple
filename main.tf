@@ -9,12 +9,12 @@ terraform {
       version = "0.53.1"
     }
   }
-  #cloud {
-  #organization = "WPHC-TFC-ORG"
-  #workspaces {
-  #name = "WPHC-BTP-TF-DEV"
-  #}
-  #}
+  cloud {
+   organization = "WPHC-TFC-ORG"
+   workspaces {
+    name = "WPHC-BTP-TF-DEV"
+    }
+  }
 }
 
 provider "btp" {
