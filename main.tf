@@ -10,9 +10,9 @@ terraform {
     }
   }
   cloud {
-   organization = "WPHC-TFC-ORG"
-   workspaces {
-    name = "WPHC-BTP-TF-DEV-Simple"
+    organization = "WPHC-TFC-ORG"
+    workspaces {
+      name = "WPHC-BTP-TF-DEV-Simple"
     }
   }
 }
