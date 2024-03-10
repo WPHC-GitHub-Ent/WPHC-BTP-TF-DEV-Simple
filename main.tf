@@ -12,7 +12,7 @@ terraform {
   cloud {
    organization = "WPHC-TFC-ORG"
    workspaces {
-    name = "WPHC-BTP-TF-DEV"
+    name = "WPHC-BTP-TF-DEV-Simple"
     }
   }
 }
