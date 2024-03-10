@@ -1,6 +1,6 @@
 # Deploy BTP Infrastructure with Terraform using GitHub Actions
 
-name: 'BTP-TF-TRIAL'
+name: 'BTP-TF-TRIAL-DEPLOY'
 
 on:
   # Triggers the workflow on pull request events but only for the "main" branch.
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   BTP-TF-TRIAL:
-    name: 'BTP-TF-TRIAL'
+    name: 'BTP-TF-TRIAL-DEPLOY'
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest.
@@ -50,6 +50,6 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
 
-      # On push to "main", build or change infrastructure according to Terraform configuration files   
+      # On push to "main" or manual start, build or change infrastructure according to Terraform configuration files   
     - name: Terraform Apply      
       run: terraform apply -auto-approve -input=false
